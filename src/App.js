@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import About  from './About';
 import {Tasks} from './Tasks';
-import AddTask from './AddTask';
-import EditTask from './EditTask';
+import {AddTask} from './AddTask';
+import {EditTask} from './EditTask';
 import Landing from './Landing';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { createStore,applyMiddleware,compose } from 'redux';
@@ -12,7 +12,7 @@ import thunk from 'redux-thunk';
 import reducers from './reducers'
 
 const store = createStore(
-    reducers,compose(applyMiddleware(thunk))
+    reducers,compose(applyMiddleware(thunk),window.devToolsExtension ? window.devToolsExtension() : f => f)
 );
 
 class App extends Component {
@@ -29,9 +29,9 @@ class App extends Component {
                             <div>
                                 <Route path='/' exact={true} component={Landing} />
                                 <Route path='/tasks' exact={true} component={Tasks} />
-                                <Route path='/tasks/add' component={AddTask} />
-                                <Route path='/tasks/:id/edit' component={EditTask} />
-                                <Route path='/about' component={About} />
+                                <Route path='/tasks/add' exact={true} component={AddTask} />
+                                <Route path='/tasks/:id/edit' exact={true} component={EditTask} />
+                                <Route path='/about' exact={true} component={About} />
                             </div>
                         </BrowserRouter>
                     </Provider>

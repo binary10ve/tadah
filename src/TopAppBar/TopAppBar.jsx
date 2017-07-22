@@ -1,22 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles, createStyleSheet } from 'material-ui/styles';
-import AppBar from 'material-ui/AppBar';
-import LeftSideBar from './../LeftSideBar';
-import Toolbar from 'material-ui/Toolbar';
-import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button';
-import IconButton from 'material-ui/IconButton';
-import MenuIcon from 'material-ui-icons/Menu';
-
-const styleSheet = createStyleSheet('ButtonAppBar', {
-    root: {
-        width: '100%',
-    },
-    flex: {
-        flex: 1,
-    },
-});
+import {Link } from 'react-router-dom';
 
 
 class TopAppBar extends React.Component {
@@ -34,23 +18,35 @@ class TopAppBar extends React.Component {
     }
 
     render() {
-        const classes = this.props.classes;
+
         return (
-            <div className={classes.root}>
-                <AppBar position="static" color="primary">
-                    <Toolbar>
-                        <IconButton color="contrast" aria-label="Menu">
-                            <MenuIcon onClick={this.toggleDrawer.bind(this)} />
-                        </IconButton>
-                        <Typography type="title" color="inherit" className={classes.flex}>
-                            Tadah
-                        </Typography>
-                    </Toolbar>
-                </AppBar>
-                <LeftSideBar open={this.state.open} onToggleDrawer={this.toggleDrawer.bind(this)} />
+            <div>
+                <header className="main-nav">
+
+                    <div className="navbar navbar-default navbar-static-top">
+                        <div className="container">
+                            <div className="navbar-header">
+                                <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                    <span className="icon-bar"></span>
+                                    <span className="icon-bar"></span>
+                                    <span className="icon-bar"></span>
+                                </button>
+                                <a className="navbar-brand" href="index.html">Tadah</a>
+                            </div>
+                            <div className="navbar-collapse collapse ">
+                                <ul className="nav navbar-nav">
+                                    <li>
+                                        <Link to="/tasks">Tasks</Link>
+                                    </li>
+                                    <li><Link to="/about">About</Link></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </header>
             </div>
         )
     }
 }
 
-export default withStyles(styleSheet)(TopAppBar);
+export default TopAppBar;

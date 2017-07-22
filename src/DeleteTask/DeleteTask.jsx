@@ -1,35 +1,34 @@
 import React, {Component} from 'react';
-import Dialog, {
-    DialogActions,
-    DialogContent,
-    DialogContentText,
-    DialogTitle,
-} from 'material-ui/Dialog';
-import Button from 'material-ui/Button';
+import { Modal,Button} from 'react-bootstrap';
 
 class ConfirmDeleteTask extends Component {
 
     render(){
-        console.log("ConfirmDeleteTask",this.props);
         return(
-        <Dialog open={this.props.deleteOpen} onRequestClose={this.props.handleRequestClose}>
-            <DialogTitle>
-                {"Delete Task?"}
-            </DialogTitle>
-            <DialogContent>
-                <DialogContentText>
-                    Are you sure you want to delete this task?.
-                </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-                <Button onClick={this.props.handleNo.bind(this)} color="primary">
-                    No
-                </Button>
-                <Button onClick={this.props.handleYes.bind(this,this.props.taskToBeDeleted)} color="primary">
-                    Yes
-                </Button>
-            </DialogActions>
-        </Dialog>)
+            <div className="static-modal">
+                <Modal
+                    show={this.props.deleteOpen}
+                    container={this}
+                    aria-labelledby="contained-modal-title"
+                    >
+                <Modal.Dialog>
+                    <Modal.Header>
+                        <Modal.Title>Modal title</Modal.Title>
+                    </Modal.Header>
+
+                    <Modal.Body>
+                        One fine body...
+                    </Modal.Body>
+
+                    <Modal.Footer>
+                        <Button>Close</Button>
+                        <Button bsStyle="primary">Save changes</Button>
+                    </Modal.Footer>
+
+                </Modal.Dialog>
+                </Modal>
+            </div>
+        );
     }
 
 }

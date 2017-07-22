@@ -1,3 +1,10 @@
+export function categoryHasErrored(bool) {
+    return {
+        type: 'CATEGORIES_HAS_ERRORED',
+        hasErrored: bool
+    };
+}
+
 
 export function tasksHasErrored(bool) {
     return {
@@ -11,13 +18,19 @@ export function tasksAreLoading(bool) {
         isLoading: bool
     };
 }
+export function categoryFetchDataSuccess(categories) {
+    return {
+        type: 'CATEGORIES_FETCH_DATA_SUCCESS',
+        categories
+    };
+}
+
 export function tasksFetchDataSuccess(tasks) {
     return {
         type: 'TASKS_FETCH_DATA_SUCCESS',
         tasks
     };
 }
-
 
 export function confirmDeleteTask(task) {
     return {
@@ -55,6 +68,27 @@ export function deleteTaskFailed(task) {
     };
 }
 
+export function newTaskCreateSuccess(task) {
+    return {
+        type: 'NEW_TASK_CREATE_SUCCESS'
+    };
+}
+
+
+export function newTaskCreateFailed(task) {
+    return {
+        type: 'NEW_TASK_CREATE_FAILED',
+        task
+    };
+}
+
+export function taskFilterChange(filter) {
+    return {
+        type: 'TASK_FILTER_CHANGE',
+        filter
+    };
+}
+
 export function deleteTaskfromServer(taskId){
     return (dispatch) => {
         dispatch(deleteTask(taskId));
@@ -73,10 +107,45 @@ export function deleteTaskfromServer(taskId){
 
 }
 
-export function taskFetchData(url) {
+
+export function postNewTaskToServer(taskId){
     return (dispatch) => {
-        dispatch(tasksAreLoading(true));
-        fetch(url)
+        dispatch(deleteTask(taskId));
+        fetch('http://localhost:3001/tasks/' + taskId,{
+            method: 'Post',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body : JSON.stringify({ title: "New Task", description: "fooo",id : "2344"})
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw Error(response.statusText);
+                }
+                dispatch(newTaskCreateSuccess());
+                return response;
+            })
+            .catch(() => dispatch(newTaskCreateFailed(true)));
+    };
+
+}
+
+export function fetchCategoryAndTask(categoryUrl, taskUrl) {
+
+    return (dispatch) => {
+        let apiRequest1 = fetch(categoryUrl)
+            .then((response) => {
+                if (!response.ok) {
+                    throw Error(response.statusText);
+                };
+                return response;
+            })
+            .then((response) => response.json())
+            .then((tasks) => dispatch(categoryFetchDataSuccess(tasks)))
+            .catch(() => dispatch(categoryHasErrored(true)));
+
+        let apiRequest2 = fetch(taskUrl)
             .then((response) => {
                 if (!response.ok) {
                     throw Error(response.statusText);
@@ -87,5 +156,10 @@ export function taskFetchData(url) {
             .then((response) => response.json())
             .then((tasks) => dispatch(tasksFetchDataSuccess(tasks)))
             .catch(() => dispatch(tasksHasErrored(true)));
-    };
+        Promise.all([apiRequest1,apiRequest2]);
+
+    }
+
+
+
 }

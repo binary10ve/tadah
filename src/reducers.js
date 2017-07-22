@@ -1,5 +1,8 @@
 import {TaskReducers} from './Tasks';
-//import {DeleteTaskReducer} from './DeleteTask';
+import {TaskFieldReducer} from './TaskFields';
+import {AddTaskReducer} from './AddTask';
+import {EditTaskReducer} from './EditTask';
 import { combineReducers} from 'redux';
-const reducers = combineReducers({tasks: TaskReducers});
+import { reducer as form  } from 'redux-form';
+const reducers = combineReducers({tasks: TaskReducers, categories: TaskFieldReducer,form, newTask : AddTaskReducer,editTask :EditTaskReducer});
 export default reducers;

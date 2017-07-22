@@ -1,2 +1,4 @@
-import EditTask from './EditTask.jsx';
-export default EditTask;
+import T from './EditTask.jsx';
+import Tr from './EditTaskReducer.js';
+export  const EditTask = T;
+export const EditTaskReducer = Tr;

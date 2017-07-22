@@ -5,10 +5,7 @@ export default class DefaultLayout extends React.Component {
     render() {
         return (
             <div>
-                <TopAppBar
-                    title="Tadah"
-                    iconClassNameRight="muidocs-icon-navigation-expand-more"
-                    />
+                <TopAppBar/>
                 {this.props.children}
             </div>
         )

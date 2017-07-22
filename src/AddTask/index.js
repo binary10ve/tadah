@@ -1,2 +1,4 @@
-import AddTask from './AddTask.jsx';
-export default AddTask;
+import T from './AddTask.jsx';
+import Tr from './AddTaskReducer.js';
+export  const AddTask = T;
+export const AddTaskReducer = Tr;

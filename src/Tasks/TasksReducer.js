@@ -3,7 +3,7 @@ function TasksReducer(state={tasks :[]}, action) {
         case 'TASKS_HAS_ERRORED':
             return {...state, tasksAreLoading: false, tasks: []};
         case 'TASKS_ARE_LOADING':
-            return {...state, tasksAreLoading: true, tasks: []};
+            return {...state, tasksAreLoading: true, tasks: [],filter: 'all'};
         case 'TASKS_FETCH_DATA_SUCCESS':
             return {...state, tasks: action.tasks, tasksAreLoading: false};
         case 'CONFIRM_DELETE_TASK':
@@ -13,12 +13,17 @@ function TasksReducer(state={tasks :[]}, action) {
                 tasks = tasks.filter(function(task){
                    return task.id != action.taskId
                 });
-                console.log("action.taskToBeDeleted", action, tasks);
             return {...state, tasks, taskToBeDeleted : null,confirmTaskDelete: false};
         case 'CANCEL_DELETE_TASK':
             return {...state, confirmTaskDelete: false,taskToBeDeleted : null};
         case 'DELETE_TASK_SUCCESS':
             return {...state, confirmTaskDelete: false,taskToBeDeleted : null,tasksAreLoading:false};
+
+        case 'CATEGORIES_FETCH_DATA_SUCCESS':
+            return {...state, categories : action.categories};
+        case 'TASK_FILTER_CHANGE':
+            console.log('TASK_FILTER_CHANGE',action);
+            return {...state, filter : action.filter};
         default:
             return state
     }
