@@ -13,7 +13,6 @@ const FormTextAreaField = ({
             ((error &&
                 <span>
             {error}
-                    <ControlLabel>Input  warning and feedback icon</ControlLabel>
           </span>
             ) ||
             (warning &&
