@@ -1,8 +1,15 @@
 import React from 'react';
 import { Form,Col,FormGroup,Checkbox,Button,FormControl,ControlLabel} from 'react-bootstrap';
 import {categoriesFetchData} from './TaskFieldActions';
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
+
+import 'react-datepicker/dist/react-datepicker.css';
+import CancelButton from './../Shared/CancelButton';
+import FormDatePickerField from './../Shared/FormDatePickerField';
+import FormTextAreaField from './../Shared/FormTextAreaField';
+import FormSelectField from './../Shared/FormSelectField';
+
 class TaskFields extends React.Component {
 
     constructor(props) {
@@ -13,31 +20,30 @@ class TaskFields extends React.Component {
         this.props.fetchCategories('http://localhost:3001/categories');
     }
 
+
+
     render() {
+
         let categories = [];
         if(this.props.categories.categories){
             categories = categories.concat(this.props.categories.categories);
         }
         return (
            <div>
-               <FormGroup controlId="formHorizontalDescription">
+               <FormGroup controlId="formHorizontalDescription" validationState={this.props.errors.description ? "error": null}>
                    <Col componentClass={ControlLabel} sm={2}>
                        Description
                    </Col>
                    <Col sm={10}>
-                       <Field name="description" className="form-control" component="textarea"/>
+                       <Field name="description" className="form-control" component={FormTextAreaField} />
                    </Col>
                </FormGroup>
-               <FormGroup controlId="formHorizontalCategory">
+               <FormGroup controlId="formHorizontalCategory" validationState={this.props.errors.categoryId ? "error": null}>
                    <Col componentClass={ControlLabel} sm={2}>
                        Category
                    </Col>
                    <Col sm={10}>
-                       <Field name="categoryId" component="select" className="form-control">
-                           <option>Please Select</option>
-                           {categories.map((c) =>
-                                   <option key={c.id} value={c.id}>{c.name}</option>
-                           )}
+                       <Field name="categoryId" component={FormSelectField} options={categories} className="form-control">
                        </Field>
                    </Col>
                </FormGroup>
@@ -47,7 +53,12 @@ class TaskFields extends React.Component {
                        Due Date
                    </Col>
                    <Col sm={10}>
-                       <FormControl type="text" placeholder="Title" />
+                       <Field
+                       name="dueDate"
+                       type="text"
+                       component={FormDatePickerField}
+                       label="Due Date"
+                       />
                    </Col>
                </FormGroup>
 
@@ -64,6 +75,14 @@ class TaskFields extends React.Component {
                                Completed
                                </label>
                        </div>
+                   </Col>
+               </FormGroup>
+               <FormGroup>
+                   <Col smOffset={2} sm={10} className="form-footer">
+                       <CancelButton/>
+                       <Button type="submit" bsStyle="primary">
+                           Save
+                       </Button>
                    </Col>
                </FormGroup>
            </div>

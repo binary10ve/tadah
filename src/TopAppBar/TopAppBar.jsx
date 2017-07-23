@@ -18,22 +18,21 @@ class TopAppBar extends React.Component {
     }
 
     render() {
-
+console.log("topbar", this.state)
         return (
             <div>
                 <header className="main-nav">
-
                     <div className="navbar navbar-default navbar-static-top">
                         <div className="container">
                             <div className="navbar-header">
-                                <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" onClick={this.toggleDrawer.bind(this)}>
                                     <span className="icon-bar"></span>
                                     <span className="icon-bar"></span>
                                     <span className="icon-bar"></span>
                                 </button>
                                 <a className="navbar-brand" href="index.html">Tadah</a>
                             </div>
-                            <div className="navbar-collapse collapse ">
+                            <div className={`navbar-collapse collapse ${this.state.open ? 'in' : ''}`} >
                                 <ul className="nav navbar-nav">
                                     <li>
                                         <Link to="/tasks">Tasks</Link>

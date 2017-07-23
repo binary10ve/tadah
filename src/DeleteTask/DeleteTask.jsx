@@ -5,28 +5,19 @@ class ConfirmDeleteTask extends Component {
 
     render(){
         return(
-            <div className="static-modal">
-                <Modal
-                    show={this.props.deleteOpen}
-                    container={this}
-                    aria-labelledby="contained-modal-title"
-                    >
-                <Modal.Dialog>
-                    <Modal.Header>
-                        <Modal.Title>Modal title</Modal.Title>
-                    </Modal.Header>
-
-                    <Modal.Body>
-                        One fine body...
-                    </Modal.Body>
-
-                    <Modal.Footer>
-                        <Button>Close</Button>
-                        <Button bsStyle="primary">Save changes</Button>
-                    </Modal.Footer>
-
-                </Modal.Dialog>
-                </Modal>
+            <div>
+                <Modal show={this.props.deleteOpen}>
+                <Modal.Header>
+                    <Modal.Title>Confirm Task Delete</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    Are you sure you want to delete this task?
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button onClick={this.props.handleNo.bind(this)}>No</Button>
+                    <Button bsStyle="primary" onClick={this.props.handleYes.bind(this,this.props.taskToBeDeleted)}>Yes</Button>
+                </Modal.Footer>
+            </Modal>
             </div>
         );
     }

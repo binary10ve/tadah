@@ -1,4 +1,4 @@
-function TasksReducer(state={tasks :[]}, action) {
+function TasksReducer(state={tasks :[],tasksAreLoading: true}, action) {
     switch (action.type) {
         case 'TASKS_HAS_ERRORED':
             return {...state, tasksAreLoading: false, tasks: []};
@@ -18,12 +18,12 @@ function TasksReducer(state={tasks :[]}, action) {
             return {...state, confirmTaskDelete: false,taskToBeDeleted : null};
         case 'DELETE_TASK_SUCCESS':
             return {...state, confirmTaskDelete: false,taskToBeDeleted : null,tasksAreLoading:false};
-
         case 'CATEGORIES_FETCH_DATA_SUCCESS':
             return {...state, categories : action.categories};
         case 'TASK_FILTER_CHANGE':
-            console.log('TASK_FILTER_CHANGE',action);
             return {...state, filter : action.filter};
+        case 'TASK_SORT_CHANGE':
+            return {...state, sortByOption : action.sortByOption};
         default:
             return state
     }

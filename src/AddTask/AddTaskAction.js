@@ -6,6 +6,11 @@ export function newTaskCreateSuccess() {
     };
 }
 
+export function unloadData(){
+    return {
+        type: 'UNLOAD_NEW_TASK'
+    };
+}
 
 export function postTaskCreate(){
     return {
@@ -23,6 +28,7 @@ export function newTaskCreateFailed(task) {
 
 
 export function postNewTaskToServer(values,dispatch){
+    console.log("arguments",arguments);
 
         fetch('http://localhost:3001/tasks/',{
             method: 'Post',

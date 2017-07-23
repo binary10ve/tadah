@@ -2001,6 +2001,14 @@ ul li {
 
 }
 
+.when-loading{
+    min-height: 300px;
+    padding: 50px;
+    text-align: center;
+}
+.when-loading img{
+    width: 150px;
+}
 .main-nav{
     margin-bottom: 25px;
 }
@@ -2133,5 +2141,9 @@ ul.task-details li{
 
 .add-task-row .task-option #filter{
     text-transform: capitalize;
+}
+
+.form-footer button{
+    margin-right: 10px;
 }
 /* Theme Styler :: End */

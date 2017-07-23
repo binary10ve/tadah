@@ -4,20 +4,34 @@ import { connect } from 'react-redux';
 import {Link } from 'react-router-dom';
 import { reduxForm } from 'redux-form';
 import {TaskFields} from './../TaskFields';
+import CancelButton from './../Shared/CancelButton';
 import { Redirect } from 'react-router';
 import {updateTaskToServer,fetchTaskfromServer,unloadTask} from './EditTaskAction';
 import { Form,Grid, Row,Col,FormGroup,Checkbox,Button,FormControl,ControlLabel} from 'react-bootstrap';
+const errors = {};
+const validate = values => {
+    console.log("Values", values)
+    if (!values.description) {
+        errors.description = true;
+    }else{
+        delete errors['description']
+    }
+    if (!values.categoryId) {
+        errors.categoryId = true
+    }else{
+        delete errors['categoryId']
+    }
+    console.log("eeorr", errors)
+    return errors
+};
+
 class EditTask extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            updateTaskSuccess: false
-        };
     }
 
     componentDidMount() {
-
         this.props.fetchTaskfromServer(this.props.match.params.id);
     }
 
@@ -41,19 +55,8 @@ class EditTask extends React.Component {
                                 </header>
                                 <div className="panel-body">
                                     <form className="form-horizontal" onSubmit={handleSubmit}>
-                                        <TaskFields></TaskFields>
-                                        <FormGroup>
-                                            <Col smOffset={2} sm={10}>
-                                                <Button type="submit">
-                                                    Save
-                                                </Button>
-                                                <Button type="button">
-                                                    Cancel
-                                                </Button>
-                                            </Col>
-                                        </FormGroup>
+                                        <TaskFields errors={this.props.anyTouched && this.props.invalid ? errors : {}}></TaskFields>
                                     </form>
-
                                 </div>
                             </section>
 
@@ -85,7 +88,8 @@ const mapDispatchToProps = (dispatch) => {
 
 EditTask = reduxForm({
     form: 'editTask',
-    onSubmit: updateTaskToServer
+    onSubmit: updateTaskToServer,
+    validate
 })(EditTask);
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditTask);

@@ -89,6 +89,13 @@ export function taskFilterChange(filter) {
     };
 }
 
+export function tasksSortByChange(sortByOption) {
+    return {
+        type: 'TASK_SORT_CHANGE',
+        sortByOption
+    };
+}
+
 export function deleteTaskfromServer(taskId){
     return (dispatch) => {
         dispatch(deleteTask(taskId));
