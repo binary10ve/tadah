@@ -1,0 +1,17 @@
+[
+  {
+    "name" : "react","description" : "A javascript library for building user interfaces ", "version" : "15.6.1", "link": "https://facebook.github.io/react/"
+  },
+  {
+    "name" : "react-Bootstrap","description" : "React-Bootstrap is a library of reusable front-end components. You'll get the look-and-feel of Twitter Bootstrap, but with much cleaner code, via Facebook's React.js framework.", "version" : "0.31.1", "link": "https://react-bootstrap.github.io/introduction.html"
+  },
+  {
+    "name" : "redux","description" : "Redux is a predictable state container for JavaScript apps.", "version" : "3.7.2", "link": "http://redux.js.org/"
+  },
+  {
+    "name" : "redux-thunk","description" : "Thunk middleware for Redux", "version" : "2.2.0", "link": "https://github.com/gaearon/redux-thunk"
+  },
+  {
+    "name" : "redux-form","description" : "React-Bootstrap is a library of reusable front-end components. You'll get the look-and-feel of Twitter Bootstrap, but with much cleaner code, via Facebook's React.js framework.", "version" : "6.6.2", "link": "http://redux-form.com/7.0.1/"
+  }
+]

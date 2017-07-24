@@ -41,23 +41,16 @@ class AddTask extends React.Component {
         }else{
             return (
                 <DefaultLayout>
-                    <Grid>
-                        <Row>
-                            <Col md={8} mdOffset={2}>
-                                <section className="panel tasks-widget">
-                                    <header className="panel-heading">
-                                        Create New Task
-                                    </header>
-                                    <div className="panel-body">
-                                        <form className="form-horizontal" onSubmit={handleSubmit}>
-                                            <TaskFields errors={this.props.anyTouched && this.props.invalid ? errors : {}}></TaskFields>
-                                        </form>
-                                    </div>
-                                </section>
-
-                            </Col>
-                        </Row>
-                    </Grid>
+                    <section className="panel tasks-widget">
+                        <header className="panel-heading">
+                            Create New Task
+                        </header>
+                        <div className="panel-body">
+                            <form className="form-horizontal" onSubmit={handleSubmit}>
+                                <TaskFields errors={this.props.anyTouched && this.props.invalid ? errors : {}}></TaskFields>
+                            </form>
+                        </div>
+                    </section>
                 </DefaultLayout>
             );
         }

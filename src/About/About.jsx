@@ -1,23 +1,28 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import DefaultLayout from './../DefaultLayout';;
+import DefaultLayout from './../DefaultLayout';
+import { Grid, Row,Col} from 'react-bootstrap';
+import LibraryPanel from './LibraryPanel';
+import TechStack from './TechStack';
 
-
-const technologyStack = [
-    { name : "React", version : "4", link: "xyz"},
-    {name : "React Router", version : "5"}
-]
-
-function About(props) {
+function About() {
 
     return (
         <DefaultLayout>
-        <div>
-            About Page
-            {technologyStack.map((value,i) =>
-                {value.version}
-            )}
-        </div>
+            <section className="panel tasks-widget">
+                <header className="panel-heading">
+                    About
+                </header>
+                <div className="panel-body">
+                    <h3>Primary Libraries used:</h3>
+                    <article>
+                        {TechStack.map((tech, i) =>
+                                <LibraryPanel key={i} name={tech.name} link={tech.link} version={tech.version}>
+                                    {tech.description}
+                                </LibraryPanel>
+                        )}
+                    </article>
+                </div>
+            </section>
         </DefaultLayout>
     );
 }
