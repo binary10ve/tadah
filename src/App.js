@@ -4,7 +4,7 @@ import {Tasks} from './Tasks';
 import {AddTask} from './AddTask';
 import {EditTask} from './EditTask';
 import Landing from './Landing';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { createStore,applyMiddleware,compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
@@ -16,15 +16,10 @@ const store = createStore(
 
 class App extends Component {
 
-    constructor(props, context) {
-        super(props, context);
-    }
-
     render() {
         return (
-            <div>
+
                 <Provider store={store}>
-                    <BrowserRouter>
                         <div>
                             <Route path='/' exact={true} component={Landing}/>
                             <Route path='/tasks' exact={true} component={Tasks}/>
@@ -32,9 +27,7 @@ class App extends Component {
                             <Route path='/tasks/:id/edit' exact={true} component={EditTask}/>
                             <Route path='/about' exact={true} component={About}/>
                         </div>
-                    </BrowserRouter>
                 </Provider>
-            </div>
         );
     }
 }

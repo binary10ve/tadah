@@ -1,12 +1,10 @@
 import React from 'react';
 import DefaultLayout from './../DefaultLayout';
 import { connect } from 'react-redux';
-import {Link } from 'react-router-dom';
 import {TaskFields} from './../TaskFields';
 import { reduxForm } from 'redux-form';
 import { Redirect } from 'react-router';
-import {postNewTaskToServer, newTaskCreateSuccess,newTaskCreateFailed,postTaskCreate,unloadData} from './AddTaskAction';
-import { Form,Grid, Row,Col,FormGroup,Checkbox,Button,FormControl,ControlLabel} from 'react-bootstrap';
+import {postNewTaskToServer,unloadData} from './AddTaskAction';
 const errors = {};
 const validate = values => {
     console.log("Values", values)
@@ -26,9 +24,6 @@ const validate = values => {
 
 class AddTask extends React.Component {
 
-    constructor(props) {
-        super(props);
-    }
 
     componentWillUnmount(){
         this.props.unloadData();

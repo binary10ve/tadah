@@ -8,7 +8,7 @@ const FormDatePickerField = ({
     }) =>
     <div>
         <div>
-            <DatePicker {...input} dateForm="MM/DD/YYYY" selected={input.value ? moment(input.value) : null} />
+            <DatePicker {...input} dateFormat="YYYY-DD-MM" selected={input.value ? moment(input.value) : null} />
             {touched &&
             ((error &&
             <span>

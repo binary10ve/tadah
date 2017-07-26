@@ -1,5 +1,4 @@
 import React from 'react';
-import {ControlLabel} from 'react-bootstrap';
 const FormTextAreaField = ({
     input,
     label,

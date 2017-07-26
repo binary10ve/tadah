@@ -11,10 +11,6 @@ const styles = {
 
 class Landing extends Component {
 
-    constructor(props, context) {
-        super(props, context);
-    }
-
     render() {
         return (
             <DefaultLayout>

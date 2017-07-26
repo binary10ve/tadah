@@ -1,16 +1,12 @@
 import React from 'react';
 import DefaultLayout from './../DefaultLayout';
 import { connect } from 'react-redux';
-import {Link } from 'react-router-dom';
 import { reduxForm } from 'redux-form';
 import {TaskFields} from './../TaskFields';
-import CancelButton from './../Shared/CancelButton';
 import { Redirect } from 'react-router';
 import {updateTaskToServer,fetchTaskfromServer,unloadTask} from './EditTaskAction';
-import { Form,Grid, Row,Col,FormGroup,Checkbox,Button,FormControl,ControlLabel} from 'react-bootstrap';
 const errors = {};
 const validate = values => {
-    console.log("Values", values)
     if (!values.description) {
         errors.description = true;
     }else{
@@ -21,15 +17,11 @@ const validate = values => {
     }else{
         delete errors['categoryId']
     }
-    console.log("eeorr", errors)
     return errors
 };
 
 class EditTask extends React.Component {
 
-    constructor(props) {
-        super(props);
-    }
 
     componentDidMount() {
         this.props.fetchTaskfromServer(this.props.match.params.id);
@@ -40,7 +32,7 @@ class EditTask extends React.Component {
     }
 
     render() {
-        const { handleSubmit, load, pristine, reset, submitting } = this.props;
+        const { handleSubmit } = this.props;
         if(this.props.updateTaskSuccess){
             return (<Redirect to="/tasks"/>)
         }else{
@@ -65,7 +57,6 @@ class EditTask extends React.Component {
 
 
 const mapStateToProps = (state) => {
-    console.log("Initial values", state)
     return {
         initialValues : state.editTask.task,
         updateTaskSuccess: state.editTask.updateTaskSuccess

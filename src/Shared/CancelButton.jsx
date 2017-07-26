@@ -4,9 +4,6 @@ import { withRouter } from 'react-router-dom';
 
 class CancelButton extends React.Component {
 
-    constructor(props) {
-        super(props);
-    }
     goBack(){
         this.props.history.goBack();
     }

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Col,FormGroup,Button,ControlLabel} from 'react-bootstrap';
-import {categoriesFetchData} from './TaskFieldActions';
-import { Field } from 'redux-form';
+import { Form,Col,FormGroup,Checkbox,Button,FormControl,ControlLabel} from 'react-bootstrap';
+import {categoriesFetchData} from './TaskFormActions';
+import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 
 import 'react-datepicker/dist/react-datepicker.css';
@@ -11,6 +11,10 @@ import FormTextAreaField from './../Shared/FormTextAreaField';
 import FormSelectField from './../Shared/FormSelectField';
 
 class TaskFields extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
 
     componentDidMount() {
         this.props.fetchCategories('http://localhost:3001/categories');
@@ -25,7 +29,7 @@ class TaskFields extends React.Component {
             categories = categories.concat(this.props.categories.categories);
         }
         return (
-           <div>
+            <form className="form-horizontal" onSubmit={this.props.handleSubmit}>
                <FormGroup controlId="formHorizontalDescription" validationState={this.props.errors.description ? "error": null}>
                    <Col componentClass={ControlLabel} sm={2}>
                        Description
@@ -81,7 +85,7 @@ class TaskFields extends React.Component {
                        </Button>
                    </Col>
                </FormGroup>
-           </div>
+           </form>
         );
     }
 }

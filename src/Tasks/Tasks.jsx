@@ -1,13 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import DefaultLayout from './../DefaultLayout';
 import {Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import {confirmDeleteTask,deleteTask,cancelDeleteTask,deleteTaskfromServer,fetchCategoryAndTask,taskFilterChange,tasksSortByChange} from './TasksActions';
+import {confirmDeleteTask,cancelDeleteTask,deleteTaskfromServer,fetchCategoryAndTask,taskFilterChange,tasksSortByChange} from './TasksActions';
 import {DeleteTask} from './../DeleteTask';
 import TaskSortMenu from './TaskSortMenu';
 import TaskFilterMenu from './TaskFilterMenu';
-import { Grid, Row,Col,ListGroup,ListGroupItem,Button,DropdownButton,MenuItem,Table } from 'react-bootstrap';
+import { Button,Table } from 'react-bootstrap';
 import FontAwesome from 'react-fontawesome/lib';
 import Loader from './../loader.svg';
 
@@ -19,11 +18,6 @@ class Tasks extends React.Component {
         this.props.fetchCategoryAndTask('http://localhost:3001/categories', 'http://localhost:3001/tasks');
     }
 
-
-    constructor(props) {
-        super(props);
-
-    }
 
     onFilterChange(value) {
         this.props.taskFilterChange(value);
@@ -71,7 +65,7 @@ class Tasks extends React.Component {
                                 Tasks
                             </header>
                             <div className="panel-body when-loading">
-                                <img src={Loader}/>
+                                <img src={Loader} alt=""/>
                             </div>
                         </section>
                     </DefaultLayout>

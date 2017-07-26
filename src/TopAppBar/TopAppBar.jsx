@@ -1,5 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { Navbar, Nav,NavItem} from 'react-bootstrap';
+import { withRouter } from 'react-router';
 import {Link } from 'react-router-dom';
 
 
@@ -18,34 +19,36 @@ class TopAppBar extends React.Component {
     }
 
     render() {
-console.log("topbar", this.state)
         return (
             <div>
                 <header className="main-nav">
-                    <div className="navbar navbar-default navbar-static-top">
-                        <div className="container">
-                            <div className="navbar-header">
-                                <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" onClick={this.toggleDrawer.bind(this)}>
-                                    <span className="icon-bar"></span>
-                                    <span className="icon-bar"></span>
-                                    <span className="icon-bar"></span>
-                                </button>
-                                <a className="navbar-brand" href="index.html">Tadah</a>
-                            </div>
-                            <div className={`navbar-collapse collapse ${this.state.open ? 'in' : ''}`} >
-                                <ul className="nav navbar-nav">
-                                    <li>
-                                        <Link to="/tasks">Tasks</Link>
-                                    </li>
-                                    <li><Link to="/about">About</Link></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    <Navbar staticTop >
+                        <Navbar.Header>
+                            <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" onClick={this.toggleDrawer.bind(this)}>
+                                <span className="icon-bar"></span>
+                                <span className="icon-bar"></span>
+                                <span className="icon-bar"></span>
+                            </button>
+                            <Navbar.Brand>
+                                <Link to="/" >Tadah</Link>
+                            </Navbar.Brand>
+                        </Navbar.Header>
+                        <Navbar.Collapse className={`${this.state.open ? 'in' : ''}`}>
+                            <Nav>
+                                <NavItem eventKey={1} onClick={ e => this.props.history.push("/tasks") } >
+                                    Tasks
+                                </NavItem>
+                                <NavItem eventKey={1} onClick={ e => this.props.history.push("/about") } >
+                                    About
+                                </NavItem>
+                            </Nav>
+                        </Navbar.Collapse>
+
+                    </Navbar>
                 </header>
             </div>
         )
     }
 }
 
-export default TopAppBar;
+export default withRouter(TopAppBar);

@@ -1,6 +1,5 @@
 import React from 'react';
 import DefaultLayout from './../DefaultLayout';
-import { Grid, Row,Col} from 'react-bootstrap';
 import LibraryPanel from './LibraryPanel';
 import TechStack from './TechStack';
 

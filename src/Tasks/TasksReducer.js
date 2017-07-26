@@ -11,7 +11,7 @@ function TasksReducer(state={tasks :[],tasksAreLoading: true}, action) {
         case 'DELETE_TASK':
                 let tasks = state.tasks;
                 tasks = tasks.filter(function(task){
-                   return task.id != action.taskId
+                   return task.id !== action.taskId
                 });
             return {...state, tasks, taskToBeDeleted : null,confirmTaskDelete: false};
         case 'CANCEL_DELETE_TASK':

@@ -13,5 +13,12 @@
   },
   {
     "name" : "redux-form","description" : "React-Bootstrap is a library of reusable front-end components. You'll get the look-and-feel of Twitter Bootstrap, but with much cleaner code, via Facebook's React.js framework.", "version" : "6.6.2", "link": "http://redux-form.com/7.0.1/"
+  },
+  {
+    "name" : "jest","description" : "Jest is a complete and easy to set up JavaScript testing solution", "version" : "20.0.4", "link": "https://github.com/facebook/jest"
+  },
+  {
+    "name" : "jest-enzyme","description" : "JavaScript Testing utilities for React.", "version" : "2.9.1", "link": "https://github.com/airbnb/enzyme/"
   }
+
 ]
