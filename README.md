@@ -6,13 +6,13 @@
 
 * [json-server](https://github.com/typicode/json-server)
 
-    ```sh
+    ```
     npm install -g json-server
     ```
 
 * [create-react-app](https://github.com/facebookincubator/create-react-app)
 
-    ```sh
+    ```
     npm install -g create-react-app
     ```
 
