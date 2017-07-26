@@ -4,7 +4,7 @@ import {Tasks} from './Tasks';
 import {AddTask} from './AddTask';
 import {EditTask} from './EditTask';
 import Landing from './Landing';
-import { Route } from 'react-router-dom';
+import { Route,withRouter } from 'react-router-dom';
 import { createStore,applyMiddleware,compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
@@ -31,5 +31,7 @@ class App extends Component {
         );
     }
 }
+
+App = withRouter(App)
 
 export default App;

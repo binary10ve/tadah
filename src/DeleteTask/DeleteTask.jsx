@@ -1,7 +1,12 @@
 import React, {Component} from 'react';
 import { Modal,Button} from 'react-bootstrap';
 
-class ConfirmDeleteTask extends Component {
+class DeleteTask extends Component {
+
+    constructor(props){
+        super(props);
+    }
+
 
     render(){
         return(
@@ -24,4 +29,4 @@ class ConfirmDeleteTask extends Component {
 
 }
 
-export default ConfirmDeleteTask;
+export default DeleteTask;
