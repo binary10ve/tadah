@@ -1,22 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles, createStyleSheet } from 'material-ui/styles';
-import AppBar from 'material-ui/AppBar';
-import LeftSideBar from './../LeftSideBar';
-import Toolbar from 'material-ui/Toolbar';
-import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button';
-import IconButton from 'material-ui/IconButton';
-import MenuIcon from 'material-ui-icons/Menu';
-
-const styleSheet = createStyleSheet('ButtonAppBar', {
-    root: {
-        width: '100%',
-    },
-    flex: {
-        flex: 1,
-    },
-});
+import { Navbar, Nav,NavItem} from 'react-bootstrap';
+import { withRouter } from 'react-router';
+import {Link } from 'react-router-dom';
 
 
 class TopAppBar extends React.Component {
@@ -34,23 +19,36 @@ class TopAppBar extends React.Component {
     }
 
     render() {
-        const classes = this.props.classes;
         return (
-            <div className={classes.root}>
-                <AppBar position="static" color="primary">
-                    <Toolbar>
-                        <IconButton color="contrast" aria-label="Menu">
-                            <MenuIcon onClick={this.toggleDrawer.bind(this)} />
-                        </IconButton>
-                        <Typography type="title" color="inherit" className={classes.flex}>
-                            Tadah
-                        </Typography>
-                    </Toolbar>
-                </AppBar>
-                <LeftSideBar open={this.state.open} onToggleDrawer={this.toggleDrawer.bind(this)} />
+            <div>
+                <header className="main-nav">
+                    <Navbar staticTop >
+                        <Navbar.Header>
+                            <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" onClick={this.toggleDrawer.bind(this)}>
+                                <span className="icon-bar"></span>
+                                <span className="icon-bar"></span>
+                                <span className="icon-bar"></span>
+                            </button>
+                            <Navbar.Brand>
+                                <Link to="/" >Tadah</Link>
+                            </Navbar.Brand>
+                        </Navbar.Header>
+                        <Navbar.Collapse className={`${this.state.open ? 'in' : ''}`}>
+                            <Nav>
+                                <NavItem eventKey={1} onClick={ e => this.props.history.push("/tasks") } >
+                                    Tasks
+                                </NavItem>
+                                <NavItem eventKey={1} onClick={ e => this.props.history.push("/about") } >
+                                    About
+                                </NavItem>
+                            </Nav>
+                        </Navbar.Collapse>
+
+                    </Navbar>
+                </header>
             </div>
         )
     }
 }
 
-export default withStyles(styleSheet)(TopAppBar);
+export default withRouter(TopAppBar);
