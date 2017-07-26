@@ -75,12 +75,6 @@
       "id": "rJM7mzMIb"
     },
     {
-      "description": "asdasasdasd",
-      "categoryId": "2",
-      "dueDate": "2017-07-29",
-      "id": "HywVXGGIZ"
-    },
-    {
       "description": "Basas",
       "dueDate": "2017-07-28",
       "completed": true,
@@ -98,12 +92,6 @@
       "categoryId": "2",
       "dueDate": "2017-07-26",
       "id": "S1MnK7GUW"
-    },
-    {
-      "description": "asdasd",
-      "categoryId": "1",
-      "dueDate": "2017-07-27",
-      "id": "Hka26LzU-"
     }
   ],
   "categories": [

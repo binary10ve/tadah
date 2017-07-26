@@ -15,6 +15,11 @@
     ```
     npm install -g create-react-app
     ```
+    
+* [watchman](https://facebook.github.io/watchman/docs/install.html)
+    ```
+    brew install watchman
+    ```
 
 
 ### Install App

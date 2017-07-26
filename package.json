@@ -20,6 +20,7 @@
     "react-test-renderer": "^15.6.1",
     "redux": "^3.7.2",
     "redux-form": "^6.6.2",
+    "redux-mock-store": "^1.2.3",
     "redux-thunk": "^2.2.0"
   },
   "scripts": {
@@ -31,6 +32,11 @@
     "build-storybook": "build-storybook"
   },
   "devDependencies": {
-    "@storybook/react": "^3.1.8"
+    "@storybook/react": "^3.1.8",
+    "babel-jest": "^20.0.3",
+    "jest": "^20.0.4",
+    "jest-cli": "^20.0.4",
+    "jest-environment-node": "^20.0.3",
+    "regenerator-runtime": "^0.10.5"
   }
 }
