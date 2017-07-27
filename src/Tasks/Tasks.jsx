@@ -30,7 +30,7 @@ class Tasks extends React.Component {
     render() {
         let tasks = [];
         const categories = {};
-        const filter = this.props.filter;
+        const filter = this.props.filter
         const sortByOption = this.props.sortByOption || 'description';
         if (this.props.tasks && this.props.tasks.categories) {
             this.props.tasks.categories.forEach((c)=> {

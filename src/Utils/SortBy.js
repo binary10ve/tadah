@@ -19,6 +19,10 @@ const SortBy = (function() {
   // Converts the accented characters to its equivalent with no accent
   function ignoreAccent(text) {
     const length = accent.length;
+    if(!text){
+        return '';
+    }
+
     for (let i = 0; i < length; i += 1) {
       text = text.replace(accent.charAt(i), normal.charAt(i));
     }
